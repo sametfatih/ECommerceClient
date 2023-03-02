@@ -8,11 +8,11 @@ export class AlertifyService {
 
   constructor() { }
 
-  message(message: string , oprions : Partial<AlertifyOptions>) {
-    alertify.set('notifier', 'delay',oprions.delay);
-    alertify.set('notifier', 'position',oprions.position);
-    const msj = alertify[oprions.messageType](message);
-    if(oprions.dismisOthers)
+  message(message: string , options : Partial<AlertifyOptions>) {
+    alertify.set('notifier', 'delay',options.delay);
+    alertify.set('notifier', 'position',options.position);
+    const msj = alertify[options.messageType](message);
+    if(options.dismisOthers)
       msj.dismisOthers();
 
   }

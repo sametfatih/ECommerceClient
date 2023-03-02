@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+}
+
+.example-right-align {
+  text-align: right;
+}
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}

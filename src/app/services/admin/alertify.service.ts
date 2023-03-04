@@ -23,7 +23,7 @@ export class AlertifyService {
 
 export class AlertifyOptions{
   messageType:MesageType = MesageType.Message;
-  position:Position = Position.BottomRight;
+  position:Position = Position.TopRight;
   delay:number = 3;
   dismisOthers:boolean = false;
 }

@@ -40,11 +40,14 @@ export class CreateComponent extends BaseComponent implements OnInit {
       this.alertify.message("Ürün başarıyla eklenmiştir.", { messageType: MesageType.Success, position: Position.TopRight });
       this.createdProduct.emit(create_product)
     }, errorMessage => {
+      this.hideSpinner(SpinnerType.BallAtom);
       this.alertify.message(errorMessage, {
         dismisOthers: true,
         messageType: MesageType.Error,
         position: Position.TopRight
-      })
+      });
+      
+
     });
   
   }

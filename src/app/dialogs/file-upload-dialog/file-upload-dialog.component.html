@@ -1,0 +1,8 @@
+<h1 mat-dialog-title> Dosya Yükleme</h1>
+<div mat-dialog-content>
+  <p>Seçtiğiniz dosyaları yüklemek istediğinize emin misiniz?</p>
+</div>
+<div mat-dialog-actions style="justify-content: space-around;">
+  <button mat-button (click)="close()">İptal</button>
+  <button mat-button cdkFocusInitial [mat-dialog-close]="data">Evet</button>
+</div>

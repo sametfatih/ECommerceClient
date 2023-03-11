@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom, Observable } from 'rxjs';
 import { Create_Product } from 'src/app/contracts/product/create_product';
+import { List_Product_Image } from 'src/app/contracts/product/list_product_image';
 import { List_Product } from '../../../contracts/product/list_product';
 import { HttpclientService } from '../httpclient.service';
 
@@ -29,9 +30,10 @@ export class ProductService {
     });
   }
 
-  async read(page: number = 0, size: number = 5, succesCallBack?: () => void, errorCallBack?: (errorMessage: string) => void): Promise<{
-    totalCount: number, products: List_Product[]
-  }> {
+  async read(page: number = 0, size: number = 5, succesCallBack?: () => void, errorCallBack?: (errorMessage: string) => void):
+    Promise<{
+      totalCount: number, products: List_Product[]
+    }> {
     const promiseData: Promise<{
       totalCount: number, products: List_Product[]
     }> = this.httpClientService.get<{
@@ -49,10 +51,33 @@ export class ProductService {
     return await promiseData;
   }
 
-  async delete(id:string){
-    const deleteObservable :Observable<any> = this.httpClientService.delete({
-      controller:"products"
-    },id)
+  async delete(id: string) {
+    const deleteObservable: Observable<any> = this.httpClientService.delete({
+      controller: "products"
+    }, id)
     await firstValueFrom(deleteObservable);
+  }
+
+  async readImages(id: string,succesCallBack:()=>void): Promise<List_Product_Image[]> {
+    const getObservable: Observable<List_Product_Image[]> = this.httpClientService.get<List_Product_Image[]>({
+      action: "getproductimages",
+      controller: "products"
+    }, id);
+
+    const images : List_Product_Image[]= await firstValueFrom(getObservable);
+
+    succesCallBack();
+
+    return images;
+  }
+  async deleteImage(productId:string,imageId:string,succesCallBack:()=>void){
+    const deleteObservable = this.httpClientService.delete({
+      action: "deleteproductimage",
+      controller:"products",
+      queryString:`imageId=${imageId}`
+    },productId);
+    
+    await firstValueFrom(deleteObservable);
+    succesCallBack();
   }
 }

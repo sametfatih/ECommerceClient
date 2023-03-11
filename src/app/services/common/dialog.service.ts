@@ -14,11 +14,11 @@ export class DialogService {
       width:dialogParameters.options?.width,
       height:dialogParameters.options?.height,
       position:dialogParameters.options?.position,
-      data: dialogParameters.data.Yes,
+      data: dialogParameters.data,
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result == dialogParameters.data.Yes)
+      if (result == dialogParameters.data)
           dialogParameters.afterClosed();
     });
   }

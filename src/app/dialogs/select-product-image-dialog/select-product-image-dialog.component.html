@@ -1,0 +1,41 @@
+<h2 mat-dialog-title> Product Images</h2>
+<mat-dialog-content class="mat-typography">
+
+  <app-file-upload [options]="options"></app-file-upload>
+
+  <br>
+  <br>
+
+  <mat-grid-list cols="4" rowHeight="1:1.25">
+<mat-grid-tile *ngFor="let image of productImageList">
+  <mat-card class="product-card">
+    <mat-card-header>
+      <mat-card-title style="margin-bottom: 0.4em;">
+        {{image.fileName}}
+      </mat-card-title>
+      <!-- <mat-card-subtitle>
+        Ürün Açıklaması
+      </mat-card-subtitle> -->
+    </mat-card-header>
+      <img mat-card-image class="product-image" 
+      alt="Product image"
+      src={{image.path}}/>
+    <mat-card-actions style="justify-content: end;">
+      <button mat-stroked-button (click)="deleteImage(image.id,$event);" color="warn">
+        <mat-icon aria-hidden="true"  fontIcon="delete">
+        </mat-icon>
+        Delete
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</mat-grid-tile>
+   
+
+  </mat-grid-list>
+
+  
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-stroked-button mat-dialog-close class="w-100">Cancel</button>
+</mat-dialog-actions>

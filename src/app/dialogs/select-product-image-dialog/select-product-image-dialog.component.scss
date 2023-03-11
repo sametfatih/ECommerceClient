@@ -1,0 +1,11 @@
+.product-card{
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    justify-content: space-between;
+    margin: 1em;
+}
+.product-image{
+    align-self: center;
+    max-height: 220px;
+    max-width: -webkit-fill-available;
+}

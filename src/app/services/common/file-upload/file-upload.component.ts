@@ -39,7 +39,7 @@ export class FileUploadComponent extends BaseComponent{
     for (const file of files) {
       (file.fileEntry as FileSystemFileEntry)
         .file((_file: File) => {
-          fileData.append(_file.name, _file, file.relativePath)
+          fileData.append("Files", _file, file.relativePath)
         });
     }
 
@@ -48,7 +48,7 @@ export class FileUploadComponent extends BaseComponent{
       data: FileUploadDialogState,
       afterClosed: () => {
         this.showSpinner(SpinnerType.BallAtom);
-
+        
         this.httpClientService.post({
           controller: this.options.controller,
           action: this.options.action,

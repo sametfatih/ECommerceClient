@@ -31,6 +31,10 @@ const routes: Routes = [
       .then(module => module.BasketsModule)
   },
   {
+    path: "register", loadChildren: () => import("./ui/components/register/register.module")
+      .then(module => module.RegisterModule)
+  },
+  {
     path: "products", loadChildren: () => import("./ui/components/products/products.module")
       .then(module => module.ProductsModule)
   }

@@ -20,7 +20,7 @@ declare var $: any
 export class SelectProductImageDialogComponent extends BaseDialog<SelectProductImageDialogComponent> implements OnInit {
 
   constructor(dialogRef: MatDialogRef<SelectProductImageDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: SelectProductImageState | string,
+    @Inject(MAT_DIALOG_DATA) public dataId: SelectProductImageState | string,
     private productService: ProductService,
     private spinner: NgxSpinnerService,
     private alertify: AlertifyService,
@@ -34,20 +34,19 @@ export class SelectProductImageDialogComponent extends BaseDialog<SelectProductI
 
   async ngOnInit() {
     this.spinner.show(SpinnerType.BallAtom);
-    this.productImageList = await this.productService.readImages(this.data as string,
+    this.productImageList = await this.productService.readImages(this.dataId as string,
       () => this.spinner.hide(SpinnerType.BallAtom)
     );
   }
 
   deleteImage(imageId: string, event: any) {
-
     this.dialogService.openDialog({
       componentType: DeleteDialogComponent,
       data: DeleteState.Yes,
       options: {},
-      afterClosed() {
+      afterClosed: ()=>{
         this.spinner.show(SpinnerType.BallAtom);
-        this.productService.deleteImage(this.data as string, imageId,
+        this.productService.deleteImage(this.dataId as string, imageId,
           () => {
             this.spinner.hide(SpinnerType.BallAtom);
             var element = $(event.srcElement).parent().parent().parent().parent();
@@ -76,7 +75,7 @@ export class SelectProductImageDialogComponent extends BaseDialog<SelectProductI
     controller: "products",
     explanation: "Ürün resmini seçin veya buraya sürükleyin..",
     isAdminPage: true,
-    queryString: `id=${this.data}`
+    queryString: `id=${this.dataId}`
   }
 
 }

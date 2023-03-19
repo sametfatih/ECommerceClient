@@ -3,25 +3,25 @@
         <form [formGroup]="frm" (ngSubmit)="onSubmit(frm.value);">
             <div class="mb-3">
                 <label for="nameSurname" class="form-label">Ad Soyad *</label>
-                <input type="text" formControlName="adSoyad" class="form-control" placeholder="Ad Soyad"
-                    id="nameSurname" [ngClass]="{'is-invalid': submitted && component.adSoyad.errors}">
+                <input type="text" formControlName="nameSurname" class="form-control" placeholder="Ad Soyad"
+                    id="nameSurname" [ngClass]="{'is-invalid': submitted && component.nameSurname.errors}">
                 <div id="nameSurnameError1" class="form-text error-msg"
-                    *ngIf="submitted && component.adSoyad.errors?.required">
+                    *ngIf="submitted && component.nameSurname.errors?.required">
                     Lütfen bu alanı boş geçmeyiniz.</div>
                 <div id="nameSurnameError2" class="form-text error-msg"
-                    *ngIf="submitted && (component.adSoyad.errors?.maxlength ||component.adSoyad.errors?.minlength )">
+                    *ngIf="submitted && (component.nameSurname.errors?.maxlength ||component.nameSurname.errors?.minlength )">
                     Lütfen 3 ile 50 karakter arasında yazınız.</div>
             </div>
             <div class="mb-3">
                 <label for="name" class="form-label">Kullanıcı Adı *</label>
-                <input type="text" formControlName="kullaniciAdi" class="form-control" placeholder="Kullanıcı Adı"
-                    id="name" [ngClass]="{'is-invalid': submitted && component.kullaniciAdi.errors}">
+                <input type="text" formControlName="username" class="form-control" placeholder="Kullanıcı Adı"
+                    id="name" [ngClass]="{'is-invalid': submitted && component.username.errors}">
                 <div id="nameError1" class="form-text error-msg"
-                    *ngIf="submitted && component.kullaniciAdi.errors?.required">
+                    *ngIf="submitted && component.username.errors?.required">
                     Lütfen bu alanı boş geçmeyiniz
                 </div>
                 <div id="nameError2" class="form-text error-msg"
-                *ngIf="submitted && (component.kullaniciAdi.errors?.maxlength ||component.kullaniciAdi.errors?.minlength )">
+                *ngIf="submitted && (component.username.errors?.maxlength ||component.username.errors?.minlength )">
                 Lütfen 3 ile 50 karakter arasında yazınız.</div>
             </div>
             <div class="mb-3">
@@ -36,25 +36,25 @@
             </div>
             <div class="mb-3">
                 <label for="password1" class="form-label">Şifre *</label>
-                <input type="password" formControlName="sifre" class="form-control" placeholder="Şifre" id="password1"
-                    [ngClass]="{'is-invalid': submitted && component.sifre.errors}">
+                <input type="password" formControlName="password" class="form-control" placeholder="Şifre" id="password1"
+                    [ngClass]="{'is-invalid': submitted && component.password.errors}">
                 <div id="passwordError1" class="form-text error-msg"
-                    *ngIf="submitted && component.sifre.errors?.required">
+                    *ngIf="submitted && component.password.errors?.required">
                     Lütfen bu alanı boş geçmeyiniz.</div>
                 <div id="passwordError2" class="form-text error-msg"
-                    *ngIf="submitted && (component.sifre.errors?.maxlength ||component.sifre.errors?.minlength )">
+                    *ngIf="submitted && (component.password.errors?.maxlength ||component.password.errors?.minlength )">
                     Lütfen 3 ile 50 karakter arasında yazınız.</div>
             </div>
             <div class="mb-3">
                 <label for="password2" class="form-label">Şifre Tekrar *</label>
-                <input type="password" formControlName="sifreTekrar" class="form-control" placeholder="Şifre Tekrar"
-                    id="password2" [ngClass]="{'is-invalid': submitted && component.sifreTekrar.errors}">
+                <input type="password" formControlName="passwordConfirm" class="form-control" placeholder="Şifre Tekrar"
+                    id="password2" [ngClass]="{'is-invalid': submitted && component.passwordConfirm.errors || frm.hasError('notSame')}">
                 <div id="passwordRepError1" class="form-text error-msg"
-                    *ngIf="submitted && component.sifreTekrar.errors?.required">
+                    *ngIf="submitted && component.passwordConfirm.errors?.required">
                     Lütfen bu alanı boş geçmeyiniz
                 </div>
                 <div id="passwordRepError2" class="form-text error-msg"
-                    *ngIf="submitted && (component.sifreTekrar.errors?.maxlength ||component.sifreTekrar.errors?.minlength )">
+                    *ngIf="submitted && (component.passwordConfirm.errors?.maxlength ||component.passwordConfirm.errors?.minlength )">
                     Lütfen 3 ile 50 karakter arasında yazınız.
                 </div>
                 <div id="passwordRepError3" class="form-text error-msg" *ngIf="submitted && frm.hasError('notSame')">

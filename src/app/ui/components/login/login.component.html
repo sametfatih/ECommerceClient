@@ -1,0 +1,18 @@
+<div class="d-flex justify-content-center">
+    <div class="col-md-5 mt-3">
+            <div class="mb-3">
+                <label for="username" class="form-label">Kullanıcı Adı</label>
+                <input #txtUsernameOrEmail type="text" class="form-control" placeholder="Kullanıcı Adı & Email"
+                    id="username">
+            </div>         
+            <div class="mb-3">
+                <label for="password" class="form-label">Şifre</label>
+                <input #txtPassword type="password" class="form-control" placeholder="Şifre" id="password">            
+            </div>
+         
+            
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary" (click)="login(txtUsernameOrEmail.value,txtPassword.value)">Giriş Yap</button>
+            </div>
+    </div>
+</div>

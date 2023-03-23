@@ -5,6 +5,7 @@ import { Create_Product } from 'src/app/contracts/product/create_product';
 import { AlertifyService, MesageType, Position } from 'src/app/services/admin/alertify.service';
 import { FileUploadOptions } from 'src/app/services/common/file-upload/file-upload.component';
 import { ProductService } from 'src/app/services/common/models/product.service';
+declare var $ : any
 
 @Component({
   selector: 'app-create',
@@ -36,6 +37,9 @@ export class CreateComponent extends BaseComponent implements OnInit {
     create_product.price = parseFloat(price.value);
 
     this.productService.create(create_product, () => {
+      $("#productName").val("");
+      $("#productStock").val("");
+      $("#productPrice").val("");
       this.hideSpinner(SpinnerType.BallAtom);
       this.alertify.message("Ürün başarıyla eklenmiştir.", { messageType: MesageType.Success, position: Position.TopRight });
       this.createdProduct.emit(create_product)

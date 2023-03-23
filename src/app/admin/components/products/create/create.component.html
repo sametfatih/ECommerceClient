@@ -1,22 +1,22 @@
-
+  <h2 class="text-center">Ürün Ekle</h2>
   <mat-form-field appearance="fill">
-    <mat-label>Name</mat-label>
-    <input matInput type="text" #txtName>
+    <mat-label>Ürün Adı</mat-label>
+    <input matInput id="productName" type="text" #txtName>
   </mat-form-field>
 
   <mat-form-field appearance="fill"
   floatLabel="always">
-    <mat-label>Stock</mat-label>
-    <input matInput type="number"
+    <mat-label>Stok Adedi</mat-label>
+    <input matInput id="productStock" type="number"
     class="example-right-align" placeholder="0" min="0" step="1" #txtStock>
-    <span matTextSuffix>&nbsp;Qty</span>
+    <span matTextSuffix>&nbsp;Adet</span>
   </mat-form-field>
 
   <mat-form-field appearance="fill" floatLabel="always">
-    <mat-label>Price</mat-label>
-    <input matInput type="number" class="example-right-align" placeholder="0" min="0" #txtPrice>
+    <mat-label>Fiyat</mat-label>
+    <input matInput id="productPrice" type="number" class="example-right-align" placeholder="0" min="0" #txtPrice>
     <span matTextSuffix>&nbsp;₺</span>
   </mat-form-field>
 
   <button mat-raised-button color="primary" 
-  (click)="create(txtName,txtStock,txtPrice)" >Create Product</button>
+  (click)="create(txtName,txtStock,txtPrice)" >Ürün Oluştur</button>

@@ -1,8 +1,17 @@
 <mat-drawer-container class="product-create">
-    <mat-drawer mode="side" opened>
-        <app-create (createdProduct)="createdProduct($event)"></app-create>
+    <mat-drawer #drawer mode="side">
+        <div class="center" style="height: inherit;">
+            <app-create (createdProduct)="createdProduct($event)"></app-create>
+        </div>
     </mat-drawer>
     <mat-drawer-content>
+        <button type="button" mat-button extended style="border-radius: 0;background-color: #36c956;"
+            id="topButton"
+            class="w-100 text-white" (click)="drawer.toggle()"(click)="changeText()">
+            <a id="topText">Ürün Ekle</a>
+            <mat-icon id="topIcon1" aria-hidden="false" aria-label="Example home icon" fontIcon="arrow_forward_ios"></mat-icon>
+            <mat-icon id="topIcon2" style="display: none;" aria-hidden="false" aria-label="Example home icon" fontIcon="arrow_back_ios"></mat-icon>
+        </button>
         <app-list></app-list>
     </mat-drawer-content>
-  </mat-drawer-container>
+</mat-drawer-container>

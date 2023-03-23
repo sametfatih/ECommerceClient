@@ -1,6 +1,10 @@
 .product-create {
     width: max;
-    height: 300pt;
     margin: 10px;
     border: 1px solid #555;
   }
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

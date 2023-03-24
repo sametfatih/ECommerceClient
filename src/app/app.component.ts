@@ -22,6 +22,7 @@ export class AppComponent {
     this.authService.identityCheck();
 
     this.router.navigate([""]);
+    window.location.reload();
 
     this.toastrService.message("Oturumunuz son bulmuştur.", "Oturum kapatıldı", {
       messageType: ToastrMessageType.Warning,

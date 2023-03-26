@@ -8,11 +8,13 @@ import { UiModule } from './ui/ui.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { LoginComponent } from './ui/components/login/login.component';
 import { GoogleLoginProvider, SocialLoginModule, SocialAuthServiceConfig, FacebookLoginProvider } from '@abacritt/angularx-social-login';
 import { GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
+import { HttpErrorHandlerInterceptorService } from './services/common/http-error-handler-interceptor.service';
+import { AuthGuard } from './guards/common/auth.guard';
 
 @NgModule({
   declarations: [
@@ -29,8 +31,8 @@ import { GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
     NgxSpinnerModule,
     HttpClientModule,
     JwtModule.forRoot({
-      config:{
-        tokenGetter: ()=> localStorage.getItem("accessToken"),
+      config: {
+        tokenGetter: () => localStorage.getItem("accessToken"),
         allowedDomains: ["localhost:7264"],
       }
     }),
@@ -56,6 +58,10 @@ import { GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
         ],
         onError: err => console.log(err)
       } as SocialAuthServiceConfig
+    },
+    {
+      provide: HTTP_INTERCEPTORS, useClass: HttpErrorHandlerInterceptorService,
+      multi: true
     }
   ],
   bootstrap: [AppComponent]
